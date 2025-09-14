@@ -1,0 +1,59 @@
+# Bot Configuration
+bot:
+  name: "RedditBot"
+  version: "1.0.0"
+  subreddits:
+    - "india"
+    - "AskReddit"
+  
+  # Timing settings (in minutes)
+  check_interval: 60  # Check every hour
+  
+  # Rate limiting
+  max_replies_per_hour: 3
+  min_reply_interval: 600  # 10 minutes between replies
+  
+  # Post filtering
+  min_score_threshold: 0
+  max_post_age_hours: 24
+  
+  # Response settings
+  max_response_length: 200
+  min_keyword_priority: 2
+
+# LLM Configuration
+llm:
+  primary_provider: "gemini"
+  fallback_providers:
+    - "claude"
+    - "openai"
+  
+  # Model settings
+  models:
+    gemini: "gemini-1.5-flash"
+    claude: "claude-3-haiku-20240307"
+    openai: "gpt-3.5-turbo"
+  
+  # Generation parameters
+  temperature: 0.7
+  max_tokens: 500
+
+# Database Configuration
+database:
+  path: "./database/reddit_bot.db"
+  cleanup_days: 30  # Keep data for 30 days
+  backup_enabled: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "./logs/reddit_bot.log"
+  max_file_size_mb: 10
+  backup_count: 5
+
+# Web UI Configuration
+web_ui:
+  enabled: true
+  host: "localhost"
+  port: 5000
+  auto_refresh_seconds: 5
