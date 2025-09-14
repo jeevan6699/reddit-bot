@@ -29,20 +29,27 @@ reddit-bot/
 │   ├── settings.yaml       # Main bot configuration
 │   ├── keywords.yaml       # Keyword rules and patterns
 │   ├── .env.example        # Environment variables template
+├── tests/                  # Comprehensive test suite
 ├── database/               # SQLite database and backups
 ├── logs/                   # Log files
 ├── requirements.txt        # Python dependencies
-├── start_bot.sh           # Startup script
+├── start_bot.py           # Cross-platform Python startup script
+├── start_bot.sh           # Linux/macOS startup script
+├── start_bot.ps1          # Windows PowerShell startup script  
+├── start_bot.bat          # Windows CMD startup script
 └── README.md
 ```
 
-## Quick Start
+## Quick Setup & Startup Options
+
+You can start the Reddit bot using any of the four cross-platform startup scripts, each with command-line arguments and interactive menu options:
+
+### 🚀 **Quick Start (Any Platform)**
 
 1. **Clone and Setup**
    ```bash
    git clone <repository-url>
    cd reddit-bot
-   chmod +x start_bot.sh
    ```
 
 2. **Configure Environment**
@@ -51,14 +58,65 @@ reddit-bot/
    # Edit config/.env with your API keys (see Configuration section)
    ```
 
-3. **Run the Bot**
-   ```bash
-   ./start_bot.sh
-   ```
+3. **Choose Your Startup Method:**
 
-4. **Access Web UI**
-   - Open http://localhost:5000 in your browser
-   - Monitor bot activity and control operation
+#### **🐧 Linux/macOS (Bash)**
+```bash
+chmod +x start_bot.sh
+./start_bot.sh                # Interactive menu with 15s auto-start
+./start_bot.sh --service      # Start bot directly  
+./start_bot.sh --tests        # Run tests directly
+./start_bot.sh --help         # Show help
+```
+
+#### **🪟 Windows (PowerShell)**
+```powershell
+.\start_bot.ps1               # Interactive menu with 15s auto-start
+.\start_bot.ps1 -Service      # Start bot directly
+.\start_bot.ps1 -Tests        # Run tests directly
+.\start_bot.ps1 -Help         # Show help
+```
+
+#### **🪟 Windows (Command Prompt)**
+```cmd
+start_bot.bat                 # Interactive menu with 15s auto-start
+start_bot.bat /service        # Start bot directly
+start_bot.bat /tests          # Run tests directly
+start_bot.bat /help           # Show help
+```
+
+#### **🐍 Python (Cross-Platform)**
+```bash
+python start_bot.py           # Interactive menu with 15s auto-start
+python start_bot.py --service # Start bot directly
+python start_bot.py --tests   # Run tests directly
+python start_bot.py --help    # Show help
+```
+
+### ✨ **Interactive Menu Features**
+All startup scripts provide an interactive menu with:
+- **Auto-start**: Automatically starts the bot after 15 seconds
+- **Instant selection**: Press 1, 2, or 3 during countdown to select immediately
+- **Options**:
+  - `1` → Start Bot Service (launches bot + web UI)
+  - `2` → Run Test Suite (comprehensive pytest tests)
+  - `3` → Exit
+
+### 🌐 **Access Web Interface**
+After starting the bot, open http://localhost:5000 in your browser to:
+- Monitor bot activity in real-time
+- View statistics and logs
+- Control bot operation (start/stop/pause)
+
+### 🛠 **What the Scripts Do Automatically**
+All startup methods automatically handle:
+- ✅ Python version detection and validation
+- ✅ Virtual environment creation and activation
+- ✅ Dependency installation and updates
+- ✅ Configuration validation (checks for .env file)
+- ✅ Directory creation (logs, database, templates)
+- ✅ Bot startup with web UI
+- ✅ Error handling and helpful messages
 
 ## Configuration
 
@@ -115,9 +173,47 @@ LOG_FILE=./logs/reddit_bot.log
 ## Usage
 
 ### Starting the Bot
+
+Choose any of the four startup methods based on your platform and preference:
+
+#### **Cross-Platform Options**
+
+**🐍 Python (Works everywhere):**
 ```bash
-./start_bot.sh
+python start_bot.py           # Interactive menu
+python start_bot.py --service # Direct start
+python start_bot.py --tests   # Run tests
 ```
+
+**🐧 Linux/macOS (Bash):**
+```bash
+./start_bot.sh               # Interactive menu  
+./start_bot.sh --service     # Direct start
+./start_bot.sh --tests       # Run tests
+```
+
+**🪟 Windows (PowerShell):**
+```powershell
+.\start_bot.ps1              # Interactive menu
+.\start_bot.ps1 -Service     # Direct start  
+.\start_bot.ps1 -Tests       # Run tests
+```
+
+**🪟 Windows (CMD):**
+```cmd
+start_bot.bat                # Interactive menu
+start_bot.bat /service       # Direct start
+start_bot.bat /tests         # Run tests
+```
+
+#### **Interactive Menu Features**
+- **15-second auto-start**: Automatically starts bot if no selection made
+- **Instant response**: Press 1, 2, or 3 during countdown to select immediately  
+- **Cross-platform**: Consistent behavior across all operating systems
+- **Smart validation**: Only accepts valid menu options
+- **Error handling**: Clear error messages and menu navigation
+
+All startup methods automatically handle environment setup, dependency installation, and configuration validation.
 
 ### Web Interface
 Access the monitoring interface at http://localhost:5000
